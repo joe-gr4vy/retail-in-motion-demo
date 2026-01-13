@@ -9,6 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@gr4vy/embed-react": "^2.36.2",
+    "@gr4vy/node": "^1.4.0",
+    "jsonwebtoken": "^9.0.3",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3"
