@@ -8,8 +8,9 @@ function CheckoutWrapper() {
   const searchParams = useSearchParams();
   const flightNumber = searchParams.get('flight') || '';
   const flightDate = searchParams.get('date') || '';
+  const amount = searchParams.get('amount') || '0.00';
 
-  return <CheckoutContent flightNumber={flightNumber} flightDate={flightDate} />;
+  return <CheckoutContent flightNumber={flightNumber} flightDate={flightDate} amount={amount} />;
 }
 
 export default function CheckoutPage() {

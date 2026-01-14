@@ -11,8 +11,22 @@ export default function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (flightNumber.trim() && flightDate) {
-      router.push(`/checkout?flight=${encodeURIComponent(flightNumber.trim())}&date=${encodeURIComponent(flightDate)}`);
+      router.push(`/balance?flight=${encodeURIComponent(flightNumber.trim())}&date=${encodeURIComponent(flightDate)}`);
     }
+  };
+
+  const inputStyle = {
+    width: '100%',
+    padding: '16px',
+    fontSize: '18px',
+    border: '2px solid #ddd',
+    borderRadius: '8px',
+    outline: 'none',
+    transition: 'border-color 0.3s',
+    backgroundColor: 'white',
+    boxSizing: 'border-box',
+    color: '#073590',
+    fontWeight: '600'
   };
 
   return (
@@ -25,6 +39,16 @@ export default function Home() {
       alignItems: 'center',
       padding: '20px'
     }}>
+      <style>{`
+        input::placeholder {
+          color: #666 !important;
+          opacity: 1 !important;
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator {
+          filter: invert(25%) sepia(100%) saturate(500%) hue-rotate(180deg);
+        }
+      `}</style>
+
       <div style={{
         background: 'white',
         padding: '60px 40px',
@@ -75,7 +99,7 @@ export default function Home() {
           marginBottom: '30px',
           lineHeight: '1.5'
         }}>
-          Enter your flight details to pay for items purchased during your flight
+          Enter your flight details to view your outstanding balance
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -97,18 +121,10 @@ export default function Home() {
               placeholder="e.g., FR1234"
               required
               style={{
-                width: '100%',
-                padding: '16px',
-                fontSize: '18px',
-                border: '2px solid #ddd',
-                borderRadius: '8px',
+                ...inputStyle,
                 textAlign: 'center',
                 textTransform: 'uppercase',
-                fontWeight: 'bold',
-                letterSpacing: '2px',
-                outline: 'none',
-                transition: 'border-color 0.3s',
-                boxSizing: 'border-box'
+                letterSpacing: '2px'
               }}
               onFocus={(e) => e.target.style.borderColor = '#073590'}
               onBlur={(e) => e.target.style.borderColor = '#ddd'}
@@ -131,17 +147,7 @@ export default function Home() {
               value={flightDate}
               onChange={(e) => setFlightDate(e.target.value)}
               required
-              style={{
-                width: '100%',
-                padding: '16px',
-                fontSize: '16px',
-                border: '2px solid #ddd',
-                borderRadius: '8px',
-                outline: 'none',
-                transition: 'border-color 0.3s',
-                backgroundColor: 'white',
-                boxSizing: 'border-box'
-              }}
+              style={inputStyle}
               onFocus={(e) => e.target.style.borderColor = '#073590'}
               onBlur={(e) => e.target.style.borderColor = '#ddd'}
             />
@@ -171,7 +177,7 @@ export default function Home() {
               e.target.style.boxShadow = '0 4px 12px rgba(241, 196, 17, 0.4)';
             }}
           >
-            Continue to Payment
+            View Balance
           </button>
         </form>
 
